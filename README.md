@@ -158,7 +158,3 @@ python Extractor.py
 * Retry attempts
 
 ---
-
-# ❤️ **Made for high-accuracy compliance & audit workflows**
-
-If you want a **PDF version** or want this README **uploaded into your repository automatically**, just tell me!
