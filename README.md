@@ -1,9 +1,3 @@
-# TVS-Invoice-Extraction
-This project is an AI-powered invoice extraction system that automatically processes invoice images, enhances them for OCR, sends them to IBM WatsonX LLM for structured data extraction, performs multi-level validation (GST, dates, IMEI, taxes), calculates final amounts, applies proportional adjustments, and exports results to Excel with tables.
-It supports multi-line invoices, confidence scoring, error handling with retries, stamp/signature detection, and image preprocessing for maximum accuracy.
-
-Core logic is implemented in Extractor.py and image enhancement is handled by image_processor.py 
-
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.9%2B-blue?logo=python" />
   <img src="https://img.shields.io/badge/IBM-WatsonX-orange?logo=ibm" />
@@ -54,9 +48,9 @@ It is built for real-world business use where invoices vary widely in format, cl
 ## 🔧 **1. Advanced Image Preprocessing**
 
 ✔ Upscaling for better DPI
-✔ Noise removal
+✔ Denoising, Grayscale conversion
 ✔ Adaptive thresholding
-✔ Batch processing support
+✔ Batch processing support and Automated folder processing
 
 Improves OCR accuracy significantly for low-quality invoices.
 
@@ -95,25 +89,7 @@ The LLM extracts **structured JSON** including:
 
 ---
 
-## 📊 **4. Smart Amount Calculation Engine**
-
-Handles:
-
-* Tax-inclusive invoices
-* Multi-item computations
-* Difference tolerance checks
-* Proportional adjustments
-* Confidence scoring for extracted vs. calculated values
-
----
-
-## ⚡ **5. Multi-Threaded Performance**
-
-Processes multiple invoices using Python's `ThreadPoolExecutor`.
-
----
-
-## 📤 **6. Clean Excel Reporting**
+## 📤 **4. Clean Excel Reporting**
 
 Exports 2 sheets:
 
@@ -158,16 +134,7 @@ MODEL_ID = "meta-llama/llama-4-maverick-17b-128e-instruct-fp8"
 ```
 
 ---
-
-## 3️⃣ (Optional) Run Preprocessing Only
-
-```sh
-python image_processor.py
-```
-
----
-
-## 4️⃣ Run the Complete Extraction Pipeline
+## 3️⃣ Run the Complete Extraction Pipeline
 
 ```sh
 python Extractor.py
@@ -189,43 +156,6 @@ python Extractor.py
 * Phone/date corrections
 * Amount mismatches
 * Retry attempts
-
----
-
-# 🖼️ **Visual Workflow Diagram**
-
-```
- Raw Images
-      ↓
- Image Preprocessing (Upscale + Denoise + Threshold)
-      ↓
-   WatsonX LLM Extraction
-      ↓
- Field Validations (GST, IMEI, Tax %, Dates)
-      ↓
- Smart Amount Calculations + Adjustments
-      ↓
- Confidence Scoring
-      ↓
- Excel Export (2 sheets)
-```
-
----
-
-# 📌 **Future Enhancements**
-
-* Web dashboard for uploads
-* Automatic PDF → Image conversion
-* Real-time API endpoint
-* Multi-language invoice support
-* Database integration
-
----
-
-# 🤝 **Contributing**
-
-Pull requests are welcome!
-Please raise issues for bugs or feature requests.
 
 ---
 
